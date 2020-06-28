@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Calculatrice2 {
 	private   double resultat=0.0;
 	private   double resultatMultiplication=1.0;
-	private   double resultatDivision=1.0;
+	private   double resultatDivision;
 	
 	
 	public double readDoubleValeur() {		
@@ -28,14 +28,14 @@ public class Calculatrice2 {
 		public double multiplier (double nombres) {
 			
 			resultatMultiplication*= nombres;
-		System.out.println("****multiplier***"+resultatMultiplication);
+		//System.out.println("****multiplier***"+resultatMultiplication);
 				return resultatMultiplication; 
 		}
 		
-		public double diviser (double nombres) {
+		public double diviser (double nombre1,double nombre2) {
 			
-			  resultatDivision/=nombres;
-			  System.out.println("****diviser***"+resultatDivision);
+			  resultatDivision=nombre1/nombre2;
+			 // System.out.println("****diviser***"+resultatDivision);
 				return resultatDivision; 
 		}
 		
@@ -106,19 +106,31 @@ public class Calculatrice2 {
 				  
 			  case 3:
 				  System.out.println("L Opération chosie est la division  ");
-				  double d=1;
+				  double d,d1;
+				  System.out.println("Veuiller saisir le premier nombre");
 				  String saisie2=calculatrice.readStringValeur();
-				  while(!(saisie2.equals("AC") || saisie2.equals("C"))) {
-		        	  System.out.println("Enter une valeur à diviser ou taper C ou AC pour quitter ");
+				  System.out.println("Veuiller saisir le second nombre");
+				  String saisie3=calculatrice.readStringValeur();
+				  while(!(saisie2.equals("AC") || saisie2.equals("C")||saisie3.equals("AC") || saisie3.equals("C"))) {
+		        	  //System.out.println("Enter une valeur à diviser ou taper C ou AC pour quitter ");
 		        	   
 		        	  d=Double.parseDouble(saisie2);
-		        	  calculatrice.resultatDivision=calculatrice.diviser(d);
-		              System.out.println("D== "+d);
-		              System.out.println(" Résulat = "+calculatrice.resultatDivision);
+		        	  d1=Double.parseDouble(saisie3);
+		        	  if(d1!=0) {
+		        		  calculatrice.resultatDivision=calculatrice.diviser(d,d1);
+		        		  //System.out.println("D== "+d);
+			              System.out.println(" Résulat de l'opération de division de "+saisie2 +" / " +saisie3 +" est = "+calculatrice.resultatDivision);
+		        	  }else {
+		        		  System.out.println("La division par 0 est non conforme");
+		        	  }
+		        	 
+		        	  System.out.println("Veuiller saisir le premier nombre de la division sinon tapez AC ou C pour quitter");
 		              saisie2=calculatrice.readStringValeur();
+		              System.out.println("Veuiller saisir le deuxième nombre de la division sinon tapez AC ou C pour quitter");
+					  saisie3=calculatrice.readStringValeur();
 		          }
 		          
-				  System.out.println("Le résultat Finale  de l'opération est => "+calculatrice.resultatDivision);
+				  //System.out.println("Le résultat Finale  de l'opération est => "+calculatrice.resultatDivision);
 				  quit=true;
 				 break;
 				  
