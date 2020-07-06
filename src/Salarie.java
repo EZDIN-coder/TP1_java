@@ -21,9 +21,9 @@ public class Salarie {
 	}
 
 	protected void setM_nCategorie(int m_nCategorie) throws CategorieSalarieException{
-		if (m_nCategorie!=1 ||m_nCategorie!=2 ||m_nCategorie!=3)       	
-        	throw new CategorieSalarieException("****La categorie du samarie est inconnue");
-		else this.m_nCategorie = m_nCategorie;
+		if (m_nCategorie == 1 || m_nCategorie == 2 || m_nCategorie == 3)       	
+			this.m_nCategorie = m_nCategorie;
+		else  throw new CategorieSalarieException("****La categorie du salarie est inconnue");
 	}
 
 	protected int getM_nService() {
@@ -56,19 +56,31 @@ public class Salarie {
 	
 	
 
-	public Salarie(int matricules,int categoris,int service,String nom,double salaire) throws SalaireSalarieException, CategorieSalarieException  {
-		    if (m_dSalaire <= 0 || m_nCategorie!=1 ||m_nCategorie!=2 ||m_nCategorie!=3)   
-		    	throw new SalaireSalarieException(" le salaire doit etre  positif");
-		    if (m_nCategorie!=1 ||m_nCategorie!=2 ||m_nCategorie!=3)       	
-	        	throw new CategorieSalarieException("****La categorie du samarie est inconnue");			
-		    this.m_nMatricule= matricules ;
-			this. m_nCategorie = categoris;
-			this. m_nService = service;
-			this . m_strNom = nom;
-			this.m_dSalaire= salaire;
+	public Salarie(int matricules,int categorie,int service,String nom,double salaire) throws SalaireSalarieException, CategorieSalarieException  {
+		    
+			       			
+		    if (salaire  >0 && (categorie == 1 || categorie == 2 ||categorie == 3 )){
+		    	  this.m_nMatricule= matricules ;
+					this. m_nCategorie = categorie;
+					this. m_nService = service;
+					this . m_strNom = nom;
+					this.m_dSalaire= salaire;
+					
+					nbInstance++;
+					System.out.println("le salarié est instancié");
+		    }
+		    if (salaire <= 0) {
+				// System.out.println("le salaire est "+salaire);
+			    	throw new SalaireSalarieException(" le salaire doit etre  positif");
+			    }
 			
-			nbInstance++;
-			System.out.println("le salarié est instancié");
+			    if (categorie == 1 || categorie == 2 || categorie == 3) {
+					//System.out.println("le categorie est "+categorie);
+			    }else {
+						 throw new CategorieSalarieException("****La categorie du salarie est inconnue");
+					}
+
+		  
 		 
 		
 	}

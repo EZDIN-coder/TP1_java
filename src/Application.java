@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Application {
 	
-	public static void main(String[] args) throws SalaireSalarieException,CategorieSalarieException {
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		int mycategoris;
@@ -15,8 +15,8 @@ public class Application {
 		int matricule;
 		Salarie mySalarie;
 		Scanner sc= new Scanner(System.in);	
-		try {
-			System.out.println(" Etape 1: Saisie d'un salarie avec la gestion de l'exception categorie et salaire");
+	try {
+			System.out.println(" Etape 1: Saisie d'un salarie ");
 			// saisie des valeurs du salarie;
 			System.out.println("Saisir le matricule ");
 			matricule = sc.nextInt();			
@@ -39,19 +39,13 @@ public class Application {
 			
 			// Affichage du nombre des objet instanciés par la classe salarie
 			System.out.println("le nombre d'instance est "+mySalarie.nbInstance);
-			
-		  } catch (SalaireSalarieException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		  }	catch (CategorieSalarieException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-		  }	
+	
+		 
 		
 			// instantiation des objets de la classe
-			Salarie salarie1= new Salarie(123,15,1,"adam",10000);
-			Salarie salarie2= new Salarie(123,15,1,"adouma",2588888);
-			Salarie salarie3= new Salarie(123,16,1,"adouma",2588888);
+			Salarie salarie1= new Salarie(123,1,1,"adam",10000);
+			Salarie salarie2= new Salarie(123,1,1,"adouma",2588888);
+			Salarie salarie3= new Salarie(123,2,1,"adouma",2588888);
 			
 			// Affichage du nombre des objet instanciés par la classe salarie
 			System.out.println("Test 2 : le nombre de Salarié instancié est égale ="+Salarie.nbInstance);
@@ -63,19 +57,19 @@ public class Application {
 			System.out.println(salarie1.toString());
 			System.out.println(salarie2.toString());
 			System.out.println(salarie3.toString());			
-			Commercial commercial = new Commercial(123, 12, 2, "rrrrr", 2500, 50000, 500);
+			Commercial commercial = new Commercial(123, 2, 2, "rrrrr", 2500, 50000, 500);
 			//System.out.println(" tessss"+commercial.toString());
 			System.out.println("Test 4: Le salaire du Commercial est =="+commercial.calculSalaire(commercial.getM_pcCommission()));
 			
 			// Ulisattion de Hashtable			
 			Hashtable<Integer , Salarie> listSalarie = new Hashtable <Integer,Salarie>();
-			Salarie mysalarie1= new Salarie(123,15,1,"adam",2588888);
-			Salarie mysalarie2= new Salarie(458,15,1,"RYM",2588888);
-			Salarie mysalarie3= new Salarie(256,15,1,"EZZ",2588888);
-			Salarie mysalarie4= new Salarie(888,15,1,"LINA",2588888);
-			Salarie mysalarie5= new Salarie(333,15,1,"CHARLOTTE",2588888);
-			Commercial commercial1 = new Commercial(444, 15, 1, "commercial1", 4000, 20000, 5000);
-			Commercial commercial2 = new Commercial(666, 15, 1, "commercial1", 5000, 20000, 5000);
+			Salarie mysalarie1= new Salarie(123,1,1,"adam",2588888);
+			Salarie mysalarie2= new Salarie(458,1,1,"RYM",2588888);
+			Salarie mysalarie3= new Salarie(256,1,1,"EZZ",2588888);
+			Salarie mysalarie4= new Salarie(888,3,1,"LINA",2588888);
+			Salarie mysalarie5= new Salarie(333,3,1,"CHARLOTTE",2588888);
+			Commercial commercial1 = new Commercial(444, 3, 1, "commercial1", 4000, 20000, 5000);
+			Commercial commercial2 = new Commercial(666, 3, 1, "commercial1", 5000, 20000, 5000);
 			listSalarie.put(123, mysalarie1);
 			listSalarie.put(458, mysalarie2);
 			listSalarie.put(256, mysalarie3);
@@ -96,8 +90,18 @@ public class Application {
 				 //polymorphisme use with salarie and Commercial
 				 listSalarie.get(str).calculSalaire();
 			 }
-					
 	
-
+    
+	     Salarie sl= new Salarie();
+	     sl.setM_nMatricule(55555);
+	     sl.setM_dSalaire(14522);
+	     sl.setM_nCategorie(3);
+	     sl.setM_nService(15);
+	     sl.setM_strNom("TEST13");
+	
+	} catch (SalaireSalarieException | CategorieSalarieException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	  }	
 		}
 }
